@@ -1,2 +1,5 @@
 class Personaje:
   pass
+
+class pp:
+  pass
