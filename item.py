@@ -6,13 +6,9 @@ class Item:
         self.descripcion = descripcion
 
     def aplicar(self, personaje):
-        if self.tipo == "arma":
+        if self.tipo == "ataque":
             personaje.ataque = personaje.ataque + self.valor
         elif self.tipo == "defensa":
             personaje.defensa = personaje.defensa + self.valor
-        elif self.tipo == "curar":
+        elif self.tipo == "vida":
             personaje.vida = personaje.vida + self.valor
-        elif self.tipo == "daño":
-            personaje.ataque = personaje.ataque + self.valor
-        elif self.tipo == "ataque":
-            personaje.ataque = personaje.ataque + self.valor

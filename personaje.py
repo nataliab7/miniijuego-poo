@@ -1,3 +1,5 @@
+from inventario import Inventario
+
 class Personaje:
     def __init__(self, nombre, vida, ataque, defensa, nivel, inventario):
         self.nombre = nombre
@@ -5,13 +7,13 @@ class Personaje:
         self.ataque = ataque
         self.defensa = defensa
         self.nivel = nivel
-        self.inventario = inventario
+        self.inventario = Inventario()
 
     def estado(self):
-        item_info = ""
-        for item in self.inventario:
-            item_info = item_info + f"{item.nombre} "
-        r = f"{self.nombre} tiene {self.vida} puntos de vida, {self.ataque} puntos de ataque, {self.defensa} puntos de defensa y está en el nivel {self.nivel} y tiene los siguientes objetos en su inventario: {item_info}."
+        nombres_items = "|"
+        for item in self.inventario.items:
+            nombres_items = nombres_items + item.nombre + "|"
+        r = f"{self.nombre}: vida = {self.vida} | ataque = {self.ataque} | defensa = {self.defensa} | nivel = {self.nivel} | inventario = {nombres_items}"
         return r
        
     def vivo(self):
@@ -19,6 +21,17 @@ class Personaje:
         return r
     
     def __sub__(self, atacante):
-        dano = atacante.ataque - self.defensa
-        r = self.vida - dano
-        return r
+        ataque_restante = atacante.ataque
+        if ataque_restante <= self.defensa:
+            self.defensa = self.defensa - ataque_restante
+            ataque_restante = 0
+        else:
+            ataque_restante = ataque_restante - self.defensa
+            self.defensa = 0
+        if ataque_restante > 0:
+            self.vida = self.vida - ataque_restante
+        return self.vida
+    
+    def __add__(self, item):
+        item.aplicar(self)
+        return self
