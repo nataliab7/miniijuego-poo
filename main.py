@@ -3,14 +3,20 @@ from inventario import Inventario
 from item import Item
 from personaje import Personaje
 
+# Inicializar variables
+vida = 0
+ataque = 0
+defensa = 0  
+
+# Crear items
 espada = Item("Espada", "ataque", 15, "Una espada afilada de hierro")
 veneno = Item("Veneno", "ataque", 12, "Un frasco con veneno para debilitar al enemigo")
 botiquin = Item("Botiquín", "vida", 14, "Un botiquín con medicamentos para curar heridas")
 elixir = Item("Elixir", "vida", 11, "Un elixir que revitaliza al personaje")
 escudo = Item("Escudo", "defensa", 16, "Un escudo de metal")
 casco = Item("Casco", "defensa", 13, "Un casco de hierro")
-ataque10 = Item("Ataque 10", "ataque", 10, "Un objeto mágico que suma 10 puntos de ataque al personaje durante un turno")
 
+# Crear inventario total
 inventarioTotal = Inventario()
 inventarioTotal.añadir(espada)
 inventarioTotal.añadir(veneno)  
@@ -18,9 +24,9 @@ inventarioTotal.añadir(botiquin)
 inventarioTotal.añadir(elixir)
 inventarioTotal.añadir(escudo)
 inventarioTotal.añadir(casco)
-inventarioTotal.añadir(ataque10)
 
-print('¡Bienvenidos al juego de combate!')
+print() 
+print('================== BIENVENIDOS =====================')
 
 # Mostrar los items disponibles
 print() 
@@ -35,9 +41,17 @@ print('==========================================================')
 print()
 print('==== JUGADOR 1 ====')
 nombre = input('Nombre: ')
-vida = int(input('Vida: '))
-ataque = int(input('Ataque: '))
-defensa = int(input('Defensa: '))
+
+# Inicializar variables
+vida = 0
+ataque = 0
+defensa = 0  
+while vida + ataque + defensa != 100:
+    print('Reparte 100 puntos entre vida, ataque y defensa (ejemplo: vida = 50, ataque = 30, defensa = 20)')
+    vida = int(input('Vida: '))
+    ataque = int(input('Ataque: '))
+    defensa = int(input('Defensa: '))
+
 jugador1 = Personaje(nombre, vida, ataque, defensa, 1, Inventario())
 
 # Agregar items al inventario del jugador 1
@@ -63,9 +77,15 @@ print("------------------")
 print()
 print('==== JUGADOR 2 ====')
 nombre = input('Nombre: ')
-vida = int(input('Vida: '))
-ataque = int(input('Ataque: '))
-defensa = int(input('Defensa: '))
+# Inicializar variables
+vida = 0
+ataque = 0
+defensa = 0  
+while vida + ataque + defensa != 100:
+    print('Reparte 100 puntos entre vida, ataque y defensa (ejemplo: vida = 50, ataque = 20, defensa = 30)')
+    vida = int(input('Vida: '))
+    ataque = int(input('Ataque: '))
+    defensa = int(input('Defensa: '))
 jugador2 = Personaje(nombre, vida, ataque, defensa, 1, Inventario())
 
 # Agregar items al inventario del jugador 2
