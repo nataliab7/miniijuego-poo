@@ -10,6 +10,7 @@ class Personaje:
         self.inventario = Inventario()
 
     def estado(self):
+        # Muestro en pantalla el estado del personaje, incluyendo su inventario
         nombres_items = []
         for item in self.inventario.items:
             nombres_items.append(item.nombre)
@@ -17,10 +18,12 @@ class Personaje:
         return r
        
     def vivo(self):
+        # El personaje está vivo si su vida es mayor a 0.
         r = (self.vida > 0)
         return r
     
     def __sub__(self, atacante):
+        # El atacante ataca al defensor, y el defensor pierde vida si se consume toda su defensa.
         ataque_restante = atacante.ataque
         if ataque_restante <= self.defensa:
             self.defensa = self.defensa - ataque_restante
@@ -33,7 +36,7 @@ class Personaje:
         return self.vida
     
     def __add__(self, item):
-        # item.aplicar(self)
+        # Aplicar el efecto del item al personaje, es decir, suma los puntos del item al atributo correspondiente del personaje.
         if item.tipo == "ataque":
             self.ataque = self.ataque + item.valor
         elif item.tipo == "defensa":

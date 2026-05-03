@@ -3,7 +3,7 @@ from inventario import Inventario
 from item import Item
 from personaje import Personaje
 
-# Crear items
+# Creo los ítems para que los jugadores puedan elegir
 espada = Item("Espada", "ataque", 15, "Una espada afilada de hierro")
 veneno = Item("Veneno", "ataque", 12, "Un frasco con veneno para debilitar al enemigo")
 botiquin = Item("Botiquín", "vida", 14, "Un botiquín con medicamentos para curar heridas")
@@ -11,7 +11,7 @@ elixir = Item("Elixir", "vida", 11, "Un elixir que revitaliza al personaje")
 escudo = Item("Escudo", "defensa", 16, "Un escudo de metal")
 casco = Item("Casco", "defensa", 13, "Un casco de hierro")
 
-# Añado items al inventario total
+# Añado items al inventario total para poder mostrarlos y que los usuarios los puedan elegir
 inventarioTotal = Inventario()
 inventarioTotal.añadir(espada)
 inventarioTotal.añadir(veneno)  
@@ -23,18 +23,18 @@ inventarioTotal.añadir(casco)
 print() 
 print('================== BIENVENIDOS =====================')
 
-# Mostrar los items disponibles
+# Muestro en pantalla los items disponibles
 print() 
 print('================== ITEMS DISPONIBLES =====================')
 inventarioTotal.mostrar()
 print('==========================================================')
  
-# Crear personaje del jugador 1
+# Crear personaje del jugador 1 y le pido al usuario que introduzca su nombre y reparta 100 puntos entre vida, ataque y defensa.
 print()
 print('==== JUGADOR 1 ====')
 nombre = input('Nombre: ')
 
-# Inicializar variables
+# Inicializo variables para controlar que suman 100 puntos los 3 atributos que el usuario va a repartir.
 vida = 0
 ataque = 0
 defensa = 0  
@@ -46,7 +46,7 @@ while vida + ataque + defensa != 100:
 
 jugador1 = Personaje(nombre, vida, ataque, defensa, 1, Inventario())
 
-# pregunto items para el jugador 1
+# Pregunto items para el jugador 1
 print()
 print(f'Selecciona dos items para {nombre}: escribe el número del item (ejemplo: Item 1 = 1, Item 2 = 3)')
 item1 = int(input('Item 1: '))
@@ -57,7 +57,7 @@ nombre_item2 = inventarioTotal.items[item2]
 jugador1.inventario.añadir(nombre_item1)
 jugador1.inventario.añadir(nombre_item2)
 
-# Aplicar los items al personaje
+# Aplico el valor de cada item al atributo correspondiente del personaje
 for item in jugador1.inventario.items:
     jugador1 + item
 
@@ -81,7 +81,7 @@ while vida + ataque + defensa != 100:
     defensa = int(input('Defensa: '))
 jugador2 = Personaje(nombre, vida, ataque, defensa, 1, Inventario())
 
-# pregunto items para el jugador 2
+# Pregunto items para el jugador 2
 print()
 print(f'Selecciona dos items para {nombre}: escribe el número del item (ejemplo: Item 1 = 1, Item 2 = 3)')
 item1 = int(input('Item 1: '))
@@ -92,7 +92,7 @@ nombre_item2 = inventarioTotal.items[item2 - 1]
 jugador2.inventario.añadir(nombre_item1)
 jugador2.inventario.añadir(nombre_item2)
 
-# Aplicar los items al personaje
+# Aplico el valor de cada item al atributo correspondiente del personaje.
 for item in jugador2.inventario.items:
     jugador2 + item
 
@@ -117,9 +117,9 @@ turno = 1
 while jugador1.vivo() and jugador2.vivo() and turno <= 10:
     print('')
     print(f"TURNO {turno}:")
-    # El jugador 1 ataca al jugador 2
+    # El jugador 1 ataca al jugador 2 y para ello se llama automáticamente al método dunder __sub__.
     jugador2.vida = jugador2 - jugador1
-    # El jugador 2 ataca al jugador 1
+    # El jugador 2 ataca al jugador 1 y para ello se llama automáticamente al método dunder __sub__.
     jugador1.vida = jugador1 - jugador2
     print(jugador1.estado())
     print(jugador2.estado())

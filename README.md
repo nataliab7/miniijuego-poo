@@ -1,12 +1,12 @@
 ## Temática del juego
 
-Juego de combate por turnos donde dos personajes luchan usando estadísticas y efectos de objetos.
+Juego de combate por turnos donde dos personajes luchan usando objetos y teniendo en cuenta sus atributos de vida, ataque y defensa.
 
 ## clases creadas
 
 - `Personaje`: representa a un luchador con `vida`, `ataque`, `defensa`, `nivel` e `inventario`.
 - `Item`: define un objeto con `nombre`, `tipo`, `valor` y `descripción`.
-- `Inventario`: almacena los objetos de un personaje y permite añadir y eliminar ítems.
+- `Inventario`: almacena los objetos de un personaje y permite añadir ítems. También se utiliza para tener un inventario total con todos los ítems disponibles.
 
 ## métodos dunder utilizados
 
@@ -23,13 +23,15 @@ Juego de combate por turnos donde dos personajes luchan usando estadísticas y e
 3. Cada jugador selecciona dos ítems para su inventario.
 4. Se aplican los efectos de los ítems a los personajes.
 5. El combate avanza por turnos, restando primero defensa y después vida al recibir daño.
-6. Gana el jugador que quede con vida mayor a cero cuando el otro muere o tras 10 turnos.
+6. Gana el jugador que quede con vida, es decir, que la vida sea mayor a cero cuando el otro muere o después de 10 turnos.
 
 ## posibles ampliaciones para el proyecto final.
 
-- Añadir más tipos de ítems y efectos especiales.
-- Introducir habilidades o ataques especiales con coste.
-- Implementar una interfaz gráfica simple o menú más completo.
+- Añadir un mapa en el que los personajes se puedan mover.
+- Nuevos objetos.
+- Ampliaciones de personajes en función del nivel.
+- Habilidades especiales.
+- Interfaz gráfica.
 - Guardar el progreso del jugador o distintos personajes en archivos.
-- Añadir un modo de guardado/cargar partida.
+- Añadir más tipos de ítems.
 
