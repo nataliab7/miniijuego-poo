@@ -5,10 +5,8 @@ class Inventario:
     def añadir(self, item):
         self.items.append(item)
 
-    def eliminar(self, item):
-        self.items.remove(item)
-
     def mostrar(self):
+        contador = 0
         for item in self.items:
-            print(f"{item.nombre}: {item.descripcion}") 
-            
+            print(f"{contador}. {item.descripcion}: +{item.valor} de {item.tipo}.")
+            contador = contador + 1

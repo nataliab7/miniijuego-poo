@@ -10,9 +10,9 @@ class Personaje:
         self.inventario = Inventario()
 
     def estado(self):
-        nombres_items = "|"
+        nombres_items = []
         for item in self.inventario.items:
-            nombres_items = nombres_items + item.nombre + "|"
+            nombres_items.append(item.nombre)
         r = f"{self.nombre}: vida = {self.vida} | ataque = {self.ataque} | defensa = {self.defensa} | nivel = {self.nivel} | inventario = {nombres_items}"
         return r
        
@@ -33,5 +33,11 @@ class Personaje:
         return self.vida
     
     def __add__(self, item):
-        item.aplicar(self)
+        # item.aplicar(self)
+        if item.tipo == "ataque":
+            self.ataque = self.ataque + item.valor
+        elif item.tipo == "defensa":
+            self.defensa = self.defensa + item.valor
+        elif item.tipo == "vida":
+            self.vida = self.vida + item.valor
         return self
