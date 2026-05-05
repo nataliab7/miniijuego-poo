@@ -57,7 +57,9 @@ nombre_item2 = inventarioTotal.items[item2]
 jugador1.inventario.añadir(nombre_item1)
 jugador1.inventario.añadir(nombre_item2)
 
-# Aplico el valor de cada item al atributo correspondiente del personaje
+# Aplico el valor de cada item al atributo correspondiente del personaje. 
+# Utilizo el método dunder __add__ para aplicar el efecto de cada item al personaje, 
+# es decir, suma los puntos del item al atributo correspondiente del personaje.
 for item in jugador1.inventario.items:
     jugador1 + item
 
@@ -93,6 +95,8 @@ jugador2.inventario.añadir(nombre_item1)
 jugador2.inventario.añadir(nombre_item2)
 
 # Aplico el valor de cada item al atributo correspondiente del personaje.
+# Utilizo el método dunder __add__ para aplicar el efecto de cada item al personaje, 
+# es decir, suma los puntos del item al atributo correspondiente del personaje.
 for item in jugador2.inventario.items:
     jugador2 + item
 

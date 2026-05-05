@@ -44,3 +44,8 @@ class Personaje:
         elif item.tipo == "vida":
             self.vida = self.vida + item.valor
         return self
+    
+    def curarse(self, puntos):
+        # Al personaje se le aumenta la vida.
+        self.vida = self.vida + puntos
+        return self

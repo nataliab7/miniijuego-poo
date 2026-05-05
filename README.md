@@ -34,4 +34,5 @@ Juego de combate por turnos donde dos personajes luchan usando objetos y teniend
 - Interfaz gráfica.
 - Guardar el progreso del jugador o distintos personajes en archivos.
 - Añadir más tipos de ítems.
+- Hay métodos que no se han usado en este momento pero se dejan preparados por si son necesarios para más adelante.
 
